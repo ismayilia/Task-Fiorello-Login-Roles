@@ -1,0 +1,104 @@
+﻿@model List<BasketDetailVM>
+
+
+@{
+    ViewData["Title"] = "Index";
+    decimal grandTotal = Model.Sum(m => m.Total);
+}
+
+@section css{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css" integrity="sha512-gOQQLjHRpD3/SEOtalVq50iDn4opLVup2TF8c4QPI3/NmUPNZOk2FG0ihi8oCU/qYEsw4P6nuEZT2lAG0UNYaw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+}
+
+
+<div class="container mt-5">
+
+
+    <div class="alert alert-info alert-basket-empty @(Model.Count == 0 ? "":"d-none")" role="alert">
+        Basket is empty !
+    </div>
+
+
+    <div class="table-responsive basket-table @(Model.Count == 0 ? "d-none":"")">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Count
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Total
+                        </th>
+                        <th>
+                            
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="py-1">
+                                <img src="~/img/@item.Image" alt="image" style="width:100px;height:100px" />
+                            </td>
+                            <td>
+                                @item.Name
+                            </td>
+                            <td>
+                                @item.Description
+                            </td>
+                            <td>
+                                @item.Category
+                            </td>
+                            <td>
+                            <i class="fa-solid fa-minus" data-id="@item.Id"></i> <span>@item.Count</span> <i class="fa-solid fa-plus" data-id="@item.Id"></i>
+                            </td>
+                            <td>
+                            @item.Price 
+                        </td>
+                            <td class="item-total-price">
+                            <span>@item.Total</span> $
+                        </td>
+                            <td>
+                                <button data-id="@item.Id" class="btn btn-danger btn-sm delete-basket-item">Delete</button>
+                            </td>
+
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+                <div class="grand-total mt-2">
+                    <h1>Grand total: <span>@grandTotal</span> $</h1>
+                </div>
+    </div>
+
+</div>
+
+@section script{
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.31/dist/sweetalert2.all.min.js"></script>
+    <script src="~/js/basket.js"></script>
+    }
+
+
+

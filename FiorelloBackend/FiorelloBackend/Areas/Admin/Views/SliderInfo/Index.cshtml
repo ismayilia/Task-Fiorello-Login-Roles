@@ -1,0 +1,66 @@
+﻿@model SliderInfo
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="container mt-5">
+    <h1 class="text-center mt-3 mb-3">Slider Infos</h1>
+    @if(Model is null)
+    {
+        <a class="btn btn-success" asp-action="Create">Create</a>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Description
+                        </th>
+                        <th>
+                            Logo
+                        </th>
+                        <th>
+                            Operations
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td class="py-1">
+                            @Html.Raw(Model.Title)
+                        </td>
+                        <td>
+                            @Model.Description
+                        </td>
+                        <td>
+                            <img src="~/img/@Model.Img" />
+                        </td>
+                        <td>
+                            <a class="btn btn-info" asp-action="Detail" asp-route-id="@Model.Id">Detail</a>
+                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                            <form class="d-inline-block" method="post" asp-action="Delete" asp-route-id="@Model.Id">
+                                <button type="submit" class="btn btn-outline-danger">Delete</button>
+                            </form>
+                        </td>
+
+                    </tr>
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+    }
+   
+</div>
+

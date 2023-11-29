@@ -1,0 +1,38 @@
+﻿@model ProductCreateVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container mt-5">
+    <form class="forms-sample" method="post" asp-action="Create" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input type="text" asp-for="Name" class="form-control" maxlength="number">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <input type="text" asp-for="Description" class="form-control" maxlength="number">
+            <span class="text-danger" asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Price">Price</label>
+            <input type="number" asp-for="Price" step="any" class="form-control" maxlength="number">
+            <span class="text-danger" asp-validation-for="Price"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryId">Categories</label>
+            <select asp-for="CategoryId" asp-items="@ViewBag.categories" class="form-control"></select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Photos">Image</label>
+            <input asp-for="Photos" class="form-control">
+            <span class="text-danger" asp-validation-for="Photos"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mr-2">Submit</button>
+        <a class="btn btn-light" asp-action="Index">Back</a>
+    </form>
+</div>
+
+

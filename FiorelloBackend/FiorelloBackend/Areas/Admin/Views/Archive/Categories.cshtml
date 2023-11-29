@@ -1,0 +1,48 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Categories";
+}
+
+
+
+<div class="container mt-5">
+    <h1 class="text-center mt-3 mb-3">Categories archive</h1>
+    
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Operations
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @category.Name
+                        </td>
+
+                        <td>
+
+                            <form class="d-inline-block" method="post" asp-action="ExtractCategory" asp-route-id="@category.Id">
+                                <button type="submit" class="btn btn-outline-danger">Extract</button>
+                            </form>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+</div>

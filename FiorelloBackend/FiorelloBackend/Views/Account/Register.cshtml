@@ -1,0 +1,90 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+@section css{
+    <style>
+        .gradient-custom-3 {
+            /* fallback for old browsers */
+            background: #84fab0;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+        }
+
+        .gradient-custom-4 {
+            /* fallback for old browsers */
+            background: #84fab0;
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+            background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+        }
+    </style>
+}
+
+
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+        <div class="container h-100">
+            <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                    <div class="card" style="border-radius: 15px;">
+                        <div class="card-body p-5">
+                            <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+                            <div style="color:red" asp-validation-summary="All"></div>
+                            <form method="post" asp-action="Register">
+
+                                <div class="form-outline mb-4">
+                                <label asp-for="FullName">Full Name</label>
+                                <input asp-for="FullName" class="form-control form-control-lg" />
+                                <span class="text-danger" asp-validation-for="FullName"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                <label asp-for="Username">User Name</label>
+                                <input asp-for="Username" class="form-control form-control-lg" />
+                                <span class="text-danger" asp-validation-for="Username"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                <label asp-for="Email">Your Email</label>
+                                <input asp-for="Email" class="form-control form-control-lg" />
+                                <span class="text-danger" asp-validation-for="Email"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                <label asp-for="Password">Password</label>
+                                <input asp-for="Password" class="form-control form-control-lg" />
+                                <span class="text-danger" asp-validation-for="Password"></span>
+                                </div>
+
+                                <div class="form-outline mb-4">
+                                <label asp-for="ConfirmPassword">Confirm Password</label>
+                                <input asp-for="ConfirmPassword" class="form-control form-control-lg" />
+                                <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                                </div>
+                                
+                                <div class="d-flex justify-content-center">
+                                    <button type="submit"
+                                            class="btn btn-success btn-block btn-lg gradient-custom-4 text-body">
+                                        Register
+                                    </button>
+                                </div>
+
+                            </form>
+                        <a class="btn btn-success mt-3" asp-action="Login">Login</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section script{
+    <partial name="_Validation.ScriptsPartial" />
+    }
+
+

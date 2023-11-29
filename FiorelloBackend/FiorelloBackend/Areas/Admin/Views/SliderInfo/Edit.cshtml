@@ -1,0 +1,39 @@
+﻿@model SliderInfo
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container mt-5">
+    <h1>Edit</h1>
+    <form class="forms-sample" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label asp-for="Title">Title</label>
+            <input asp-for="Title" value="@Html.Raw(Model.Title)" class="form-control" placeholder="Title">
+            <span asp-validation-for="Title"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Description">Description</label>
+            <input asp-for="Description" value="@Model.Description" class="form-control" placeholder="Description">
+            <span asp-validation-for="Description"></span>
+
+    </div>
+    <div class="form-group">
+        <label asp-for="Photo">Logo</label>
+        <div class="image">
+            <img src="~/img/@Model.Img" style="width:30%; height:15%" />
+            <input asp-for="Photo" class="form-control">
+                <span asp-validation-for="Photo"></span>
+
+        </div>
+        
+    </div>
+
+    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+    <div class="back mt-3">
+        <a class="btn btn-info" asp-action="Index">Back</a>
+    </div>
+</form>
+</div>
+
+

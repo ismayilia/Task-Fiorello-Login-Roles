@@ -1,0 +1,23 @@
+﻿@model SliderVM
+@{
+	ViewData["Title"] = "Detail";
+}
+
+<div class="container mt-5">
+	<div class="image">
+        <img src="~/img/@Model.Image" style="width:70%; height:30%" />
+    </div>
+        @if (Model.Status)
+        {
+            <div style="width:20px; height:20px; background-color:#00ff00;border-radius:50%" class="status-true mt-3"></div>
+        }
+        else
+        {
+            <div style="margin-top:10px; width:20px; height:20px; background-color:red;border-radius:50%" class="status-false"></div>
+        }
+
+        <div class="back mt-3">
+            <a class="btn btn-info" asp-action="Index">Back</a>
+        </div>
+	
+</div>
